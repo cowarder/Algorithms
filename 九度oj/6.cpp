@@ -99,8 +99,6 @@ int main() {
 				days += day2;
 			}
 		}
-		cout << year1 << " " << month1 << " " << day1 << endl;
-		cout << year2 << " " << month2 << " " << day2 << endl;
 		cout << days << endl;
 	}
 	return 0;
