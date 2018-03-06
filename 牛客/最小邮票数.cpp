@@ -23,8 +23,6 @@ int main() {
 			cout << dp[M] << endl;
 		else
 			cout << 0 << endl;
-		for (int i = 0; i <= M; i++)
-			cout << dp[i];
 	}
 	return 0;
 }

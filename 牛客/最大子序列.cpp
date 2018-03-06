@@ -40,13 +40,14 @@ int main() {
 		v.resize(N);
 		for (int i = 0; i < N; i++)
 			cin >> v[i];
-		int max = *max_element(v.begin(),v.end());
+		//int max = *max_element(v.begin(),v.end());
+        int max =0;
 		int sum = 0;
 		for (int i = 0; i < N; i++) {
 			sum += v[i];
 			if (sum > max)
 				max = sum;
-			else if (sum < 0)
+			if (sum < 0)
 				sum = 0;
 		}
 		cout << max << endl;

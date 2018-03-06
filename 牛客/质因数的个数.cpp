@@ -18,14 +18,11 @@ int main() {
 	while (cin >> num) {
 		newPrime = getMinPrime(num);
 		while (newPrime!=num) {
-			if (num > newPrime) {
-				if (num%newPrime == 0) {
-					v.push_back(newPrime);
-					num = num / newPrime;
-				} else {
-					newPrime =getMinPrime(num);
-				}
-			}	
+			if (num%newPrime == 0) {
+				v.push_back(newPrime);
+				num = num / newPrime;
+			} else
+				newPrime =getMinPrime(num);
 		}
 		v.push_back(num);
 		cout <<v.size()<< endl;
