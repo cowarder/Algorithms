@@ -13,6 +13,12 @@ bool judge(int num) {
 }
 
 int main() {
-	cout<<judge(2);
+    int num;
+    while(cin>>num){
+        if(judge(num))
+            cout<<"yes"<<endl;
+        else
+            cout<<"no"<<endl;
+    }
 	return 0;
 }
