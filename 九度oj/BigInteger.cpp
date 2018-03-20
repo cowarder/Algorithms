@@ -1,53 +1,44 @@
 #include<iostream>
-#include<vector>
 #include<string>
-#include<iomanip>
+#include<vector>
+#include<stack>
 using namespace std;
 
-class BigInteger {
-public:
+int main() {
+	string s;
 	vector<int>v;
-	void set(int x) {
+	stack<int> st;
+	while (cin >> s) {
+		while (!st.empty())
+			st.pop();
 		v.clear();
 		v.resize(0);
-		do {
-			v.push_back(x%10000);
-			x /= 10000;
-		} while (x != 0);
-	}
-
-	void output() {
-		for (int i = v.size() - 1; i >= 0; i--) {
-			if (i != v.size() - 1)
-				cout << setw(4) << setfill('0') << v[i];
-			else
-				cout << v[i];
+		int len = s.length();
+		v.resize(len);
+		for (int i = 0; i < len; i++)
+			v[i] = s[i] - '0';
+		for (int i = 0; i < len; i++) {
+			if (len == 1 && v[0] == 0) {
+				st.push(0);
+				break;
+			}
+			while (v[i] > 0) {
+				int c = 0;
+				st.push(v[len - 1] % 2);
+				for (int j = i; j < len; j++) {
+					int tmp = v[j];
+					v[j] = (v[j] + c) / 2;
+					if (tmp % 2 == 1)
+						c = 10;
+					else
+						c = 0;
+				}
+			}
 		}
-		cout << endl;
-	}
-
-	BigInteger operator*(int x) const{
-		int jin = 0;
-		BigInteger res;
-		for (int i = 0; i < v.size(); i++) {
-			res.v.push_back((x*v[i] + jin) % 10000);
-			jin = (x*v[i] + jin) / 10000;
+		while (!st.empty()) {
+			cout << st.top();
+			st.pop();
 		}
-		if (jin > 0)
-			res.v.push_back(jin);
-		return res;
-	}
-};
-
-int main() {
-	int N;
-	while (cin >> N) {
-		BigInteger a;
-		a.set(1);
-		for (int i = 1; i <= N; i++)
-			a =a* i;
-		a.output();
 	}
 	return 0;
-
 }
