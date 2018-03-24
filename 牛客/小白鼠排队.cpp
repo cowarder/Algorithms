@@ -28,4 +28,4 @@ int main() {
 			cout << v[i].color << endl;
 	}
 	return 0;
-}
+}
