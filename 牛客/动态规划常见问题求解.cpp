@@ -123,7 +123,28 @@ int main() {
 }
 
 
-(5)0-1背包问题要注意vector<vector<int>>dp的时候不一定是0！！！，必须要初始化
+(5)最大子序列和
+int findMaxSum(vector<int>v){
+	int sum=0;
+	int maxSum=0;
+	for(int i=0;i<v.size();i++){
+		sum+=v[i];
+		if(sum>maxSum)
+			maxSum=sum;
+		else if(sum<0)
+			sum=0;
+	}
+	cout<<maxSum<<endl;
+}
+
+
+(7)最大子序列和，但是有一个限定最大值，就转换为动态规划问题中的背包问题
+对于每个变量来说，它的value同时也是它的cost
+dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - intValue[i]] + intValue[i]);
+当遇到背包中的值为double类型的时候，可以将其乘以10的次方，转换为整数
+
+
+(6)0-1背包问题要注意vector<vector<int>>dp的时候不一定是0！！！，必须要初始化
 原理：
 dp[i][j]表示总体积不超过j的条件下，前i件物品可以达到的最大价值
 
