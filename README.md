@@ -1,1 +1,1 @@
-This repo is used to learn algorithms
+学习算法
